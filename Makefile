@@ -13,7 +13,9 @@ reset-db:
 install-deps:
 	mix local.hex --force && \
 	mix local.rebar --force && \
-	mix archive.install --force https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez && \
+  wget https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez && \
+	mix archive.install --force ./phoenix_new.ez && \
+	rm ./phoenix_new.ez && \
 	npm run install-deps && \
 	mkdir -p $(HOME)/.s3bucket/nexpo-test && \
 	mix ecto.create && \
